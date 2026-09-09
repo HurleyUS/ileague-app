@@ -1,17 +1,14 @@
 import Link from "next/link";
-import Image from "next/image";
 import { SignedIn, SignedOut, SignUpButton } from "@clerk/nextjs";
 import {
   Trophy,
   Users,
   Zap,
   Heart,
-  Star,
   ArrowRight,
   CheckCircle,
   Sparkles,
-  TrendingUp,
-  Shield,
+  Github,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -22,59 +19,24 @@ import { Footer } from "@/components/layout/footer";
 const features = [
   {
     icon: Trophy,
-    title: "Join Leagues",
-    description:
-      "Compete in exclusive leagues and challenges created by your favorite influencers.",
+    title: "Leagues",
+    description: "Create and join leagues with leaderboards — wired to Convex where shipped.",
   },
   {
     icon: Users,
-    title: "Build Community",
-    description:
-      "Connect with like-minded fans and creators in vibrant communities.",
+    title: "Community",
+    description: "Follow creators, posts, and fan engagement flows in the web app.",
   },
   {
     icon: Zap,
-    title: "Exclusive Content",
-    description:
-      "Get access to subscriber-only posts, live streams, and behind-the-scenes content.",
+    title: "Exclusive content",
+    description: "Subscriber-oriented posts and creator tooling as the product matures.",
   },
   {
     icon: Heart,
-    title: "Support Creators",
-    description:
-      "Subscribe, tip, and directly support the creators you love.",
+    title: "Creator monetization",
+    description: "Stripe Connect paths exist in the backend; treat payouts as early-access.",
   },
-];
-
-const testimonials = [
-  {
-    name: "Alex Chen",
-    role: "Gaming Creator",
-    avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100",
-    content:
-      "iLeague transformed how I connect with my community. The league feature is a game-changer!",
-  },
-  {
-    name: "Sarah Williams",
-    role: "Fitness Influencer",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100",
-    content:
-      "Finally a platform that puts creators first. My engagement has never been higher.",
-  },
-  {
-    name: "Marcus Johnson",
-    role: "Music Producer",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100",
-    content:
-      "The subscription model is fair and transparent. Love the direct connection with fans.",
-  },
-];
-
-const stats = [
-  { value: "50K+", label: "Active Creators" },
-  { value: "2M+", label: "Community Members" },
-  { value: "10K+", label: "Leagues Created" },
-  { value: "$5M+", label: "Paid to Creators" },
 ];
 
 export default function HomePage() {
@@ -83,44 +45,54 @@ export default function HomePage() {
       <Header />
 
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden py-20 lg:py-32">
-          {/* Background Gradient */}
+        <section className="relative overflow-hidden py-20 lg:py-28">
           <div className="absolute inset-0 -z-10">
             <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
             <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl" />
           </div>
 
           <div className="container">
-            <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+            <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
               <Badge variant="secondary" className="mb-6 gap-2">
                 <Sparkles className="h-3 w-3" />
-                New: League Competitions are here!
+                Early access — honest status lander
               </Badge>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-6">
-                Where{" "}
-                <span className="gradient-text">Influencers</span> and{" "}
-                <span className="gradient-text">Fans</span> Unite
+                Where <span className="gradient-text">creators</span> and{" "}
+                <span className="gradient-text">fans</span> build leagues together
               </h1>
 
-              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8">
-                Create leagues, build communities, and monetize your passion.
-                iLeague is the ultimate platform for creators and their most
-                dedicated fans.
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-6">
+                iLeague is an influencer / fan engagement monorepo (Next.js web, Expo
+                mobile, Convex backend). This is a real product lander — not a
+                &quot;Coming Soon&quot; waitlist shell and not a page of invented metrics.
               </p>
+
+              <div className="mb-8 w-full max-w-2xl rounded-xl border border-border bg-muted/40 p-5 text-left text-sm text-muted-foreground">
+                <p className="font-medium text-foreground mb-2">What is true today</p>
+                <ul className="space-y-1.5">
+                  <li>• Web app + Convex backend with auth, leagues, posts, and Stripe scaffolding</li>
+                  <li>• Mobile app exists; some screens still use placeholder data</li>
+                  <li>
+                    • Production domain <code className="text-foreground">www.ileague.app</code> may
+                    still point at an old static Coming Soon deploy until DNS/Vercel is retargeted
+                    (DEPLOY)
+                  </li>
+                </ul>
+              </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <SignedOut>
                   <SignUpButton mode="modal">
                     <Button variant="gradient" size="xl" className="gap-2">
-                      Get Started Free
+                      Get started
                       <ArrowRight className="h-5 w-5" />
                     </Button>
                   </SignUpButton>
                   <Link href="/explore">
                     <Button variant="outline" size="xl">
-                      Explore Creators
+                      Explore
                     </Button>
                   </Link>
                 </SignedOut>
@@ -132,38 +104,30 @@ export default function HomePage() {
                     </Button>
                   </Link>
                 </SignedIn>
+                <a
+                  href="https://github.com/HurleyUS/ileague-app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="outline" size="xl" className="gap-2">
+                    <Github className="h-5 w-5" />
+                    GitHub
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Stats Section */}
-        <section className="py-12 border-y border-border bg-muted/30">
+        <section className="py-16 lg:py-24 border-t border-border">
           <div className="container">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {stats.map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <div className="text-3xl md:text-4xl font-display font-bold gradient-text">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-muted-foreground mt-1">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Features Section */}
-        <section className="py-20 lg:py-32">
-          <div className="container">
-            <div className="text-center max-w-2xl mx-auto mb-16">
+            <div className="text-center max-w-2xl mx-auto mb-12">
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-                Everything You Need to Thrive
+                Product surface (no vanity stats)
               </h2>
               <p className="text-lg text-muted-foreground">
-                Powerful features designed for creators and fans alike.
+                Features below describe the intended product. We do not publish fake
+                creator counts, revenue, or testimonials.
               </p>
             </div>
 
@@ -175,9 +139,7 @@ export default function HomePage() {
                       <feature.icon className="h-6 w-6 text-white" />
                     </div>
                     <h3 className="font-semibold mb-2">{feature.title}</h3>
-                    <p className="text-sm text-muted-foreground">
-                      {feature.description}
-                    </p>
+                    <p className="text-sm text-muted-foreground">{feature.description}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -185,195 +147,62 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* For Influencers & Fans Section */}
-        <section className="py-20 bg-muted/30">
-          <div className="container">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* For Influencers */}
-              <div className="space-y-6">
-                <Badge variant="default" className="gap-2">
-                  <TrendingUp className="h-3 w-3" />
-                  For Creators
-                </Badge>
-                <h2 className="text-3xl md:text-4xl font-display font-bold">
-                  Turn Your Passion Into a Business
-                </h2>
-                <p className="text-lg text-muted-foreground">
-                  Monetize your content, build loyal communities, and create
-                  engaging experiences for your fans.
-                </p>
-                <ul className="space-y-3">
-                  {[
-                    "Set your own subscription prices",
-                    "Keep 90% of your earnings",
-                    "Create exclusive leagues and competitions",
-                    "Real-time analytics and insights",
-                    "Direct messaging with superfans",
-                  ].map((item) => (
-                    <li key={item} className="flex items-center gap-3">
-                      <CheckCircle className="h-5 w-5 text-success shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link href="/influencers">
-                  <Button variant="gradient" size="lg" className="gap-2">
-                    Start Creating
-                    <ArrowRight className="h-4 w-4" />
-                  </Button>
-                </Link>
-              </div>
-
-              {/* For Fans */}
-              <div className="space-y-6">
-                <Badge variant="secondary" className="gap-2">
-                  <Heart className="h-3 w-3" />
-                  For Fans
-                </Badge>
-                <h2 className="text-3xl md:text-4xl font-display font-bold">
-                  Get Closer to Your Favorites
-                </h2>
-                <p className="text-lg text-muted-foreground">
-                  Support creators you love, access exclusive content, and
-                  compete in exciting leagues.
-                </p>
-                <ul className="space-y-3">
-                  {[
-                    "Exclusive subscriber-only content",
-                    "Join leagues and win prizes",
-                    "Direct interaction with creators",
-                    "Early access to new releases",
-                    "Community events and meetups",
-                  ].map((item) => (
-                    <li key={item} className="flex items-center gap-3">
-                      <CheckCircle className="h-5 w-5 text-success shrink-0" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link href="/explore">
-                  <Button variant="outline" size="lg" className="gap-2">
-                    Discover Creators
-                    <ArrowRight className="h-4 w-4" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials Section */}
-        <section className="py-20 lg:py-32">
-          <div className="container">
-            <div className="text-center max-w-2xl mx-auto mb-16">
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-                Loved by Creators & Fans
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                See what our community has to say about iLeague.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              {testimonials.map((testimonial) => (
-                <Card key={testimonial.name} className="relative">
-                  <CardContent className="pt-6">
-                    <div className="flex items-center gap-4 mb-4">
-                      <Image
-                        src={testimonial.avatar}
-                        alt={testimonial.name}
-                        width={48}
-                        height={48}
-                        className="rounded-full object-cover"
-                      />
-                      <div>
-                        <div className="font-semibold">{testimonial.name}</div>
-                        <div className="text-sm text-muted-foreground">
-                          {testimonial.role}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex gap-1 mb-3">
-                      {[1, 2, 3, 4, 5].map((i) => (
-                        <Star
-                          key={i}
-                          className="h-4 w-4 fill-warning text-warning"
-                        />
-                      ))}
-                    </div>
-                    <p className="text-muted-foreground">
-                      &ldquo;{testimonial.content}&rdquo;
-                    </p>
-                  </CardContent>
-                </Card>
+        <section className="py-16 bg-muted/30 border-y border-border">
+          <div className="container max-w-3xl">
+            <h2 className="text-2xl font-display font-bold mb-4">Docs &amp; roadmap</h2>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              {[
+                {
+                  href: "https://github.com/HurleyUS/ileague-app/blob/main/README.md",
+                  label: "README — stack and project structure",
+                },
+                {
+                  href: "https://github.com/HurleyUS/ileague-app/blob/main/ROADMAP.md",
+                  label: "ROADMAP — audited working / partial / missing items",
+                },
+                {
+                  href: "https://github.com/HurleyUS/ileague-app/blob/main/PLAN.md",
+                  label: "PLAN — phased delivery notes",
+                },
+              ].map((item) => (
+                <li key={item.href} className="flex items-start gap-2">
+                  <CheckCircle className="h-4 w-4 text-success shrink-0 mt-0.5" />
+                  <a
+                    href={item.href}
+                    className="hover:text-foreground underline-offset-2 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {item.label}
+                  </a>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </section>
 
-        {/* Trust Section */}
-        <section className="py-16 border-y border-border bg-muted/30">
-          <div className="container">
-            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Shield className="h-5 w-5" />
-                <span className="text-sm font-medium">Secure Payments</span>
-              </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <CheckCircle className="h-5 w-5" />
-                <span className="text-sm font-medium">Verified Creators</span>
-              </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Zap className="h-5 w-5" />
-                <span className="text-sm font-medium">Instant Payouts</span>
-              </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Heart className="h-5 w-5" />
-                <span className="text-sm font-medium">24/7 Support</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-20 lg:py-32">
-          <div className="container">
-            <div className="relative overflow-hidden rounded-3xl gradient-primary p-8 md:p-16 text-center">
-              <div className="relative z-10 max-w-2xl mx-auto">
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
-                  Ready to Join the League?
-                </h2>
-                <p className="text-lg text-white/80 mb-8">
-                  Start for free and unlock the full potential of your community.
-                </p>
-                <SignedOut>
-                  <SignUpButton mode="modal">
-                    <Button
-                      size="xl"
-                      className="bg-white text-primary hover:bg-white/90 gap-2"
-                    >
-                      Create Your Account
-                      <ArrowRight className="h-5 w-5" />
-                    </Button>
-                  </SignUpButton>
-                </SignedOut>
-                <SignedIn>
-                  <Link href="/dashboard">
-                    <Button
-                      size="xl"
-                      className="bg-white text-primary hover:bg-white/90 gap-2"
-                    >
-                      Go to Dashboard
-                      <ArrowRight className="h-5 w-5" />
-                    </Button>
-                  </Link>
-                </SignedIn>
-              </div>
-              
-              {/* Decorative elements */}
-              <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2" />
-              <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full translate-x-1/3 translate-y-1/3" />
-            </div>
+        <section className="py-16">
+          <div className="container text-center max-w-2xl">
+            <h2 className="text-3xl font-display font-bold mb-4">Ready to try the app?</h2>
+            <p className="text-muted-foreground mb-8">
+              Sign up in the Next app. If the apex domain still shows Coming Soon, that is
+              a deploy/DNS mismatch — the product lander lives in this repository.
+            </p>
+            <SignedOut>
+              <SignUpButton mode="modal">
+                <Button variant="gradient" size="xl" className="gap-2">
+                  Create an account
+                  <ArrowRight className="h-5 w-5" />
+                </Button>
+              </SignUpButton>
+            </SignedOut>
+            <SignedIn>
+              <Link href="/dashboard">
+                <Button variant="gradient" size="xl">
+                  Open dashboard
+                </Button>
+              </Link>
+            </SignedIn>
           </div>
         </section>
       </main>
