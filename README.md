@@ -1,6 +1,8 @@
 # iLeague 🏆
 
-A modern influencer/fan engagement platform built with Next.js, Expo/React Native, and Convex.
+A modern influencer/fan engagement platform scaffold built with Next.js, Expo/React Native, and Convex.
+
+> **Honesty (2026-09-08):** Convex deployment is **pending** (run `bunx convex dev` in `packages/convex` when keys exist). Stripe / live monetization checkmarks below are **planned**, not shipped. www.ileague.app remains Coming Soon — do not invent Convex or Stripe keys.
 
 ## Overview
 
@@ -16,7 +18,7 @@ iLeague connects creators with their fans through:
 - **Expo** - Cross-platform React Native framework
 - **NativeWind** - Tailwind CSS for React Native
 - **Clerk** - Authentication
-- **Convex** - Real-time backend
+- **Convex** - Real-time backend (**deploy pending**)
 - **PostHog** - Analytics
 - **Sentry** - Error tracking
 
@@ -24,13 +26,13 @@ iLeague connects creators with their fans through:
 - **Next.js 15** - React framework with App Router
 - **Tailwind CSS v4** - Styling
 - **Clerk** - Authentication
-- **Convex** - Real-time backend
+- **Convex** - Real-time backend (**deploy pending**)
 - **PostHog** - Analytics
 - **Sentry** - Error tracking
 
 ### Backend
-- **Convex** - Real-time database and functions
-- **Stripe** - Payments and subscriptions
+- **Convex** - Real-time database and functions (**deploy pending**)
+- **Stripe** - Payments and subscriptions (**planned — not wired**)
 - **Resend** - Transactional emails
 
 ## Project Structure
@@ -124,23 +126,23 @@ See `.env.example` for all required environment variables:
 - ✅ Profile customization with cover images and social links
 - ✅ Content posting (text, images, videos, polls)
 - ✅ League creation (competitions, challenges, communities)
-- ✅ Subscription tiers (monthly/yearly)
-- ✅ Tip receiving
+- ⬜ Subscription tiers (monthly/yearly) (planned)
+- ⬜ Tip receiving (planned)
 - ✅ Analytics dashboard
-- ✅ Stripe Connect payouts
+- ⬜ Stripe Connect payouts (planned)
 
 ### For Fans
 - ✅ Creator discovery and search
 - ✅ Follow and subscribe to creators
 - ✅ Join leagues and compete
 - ✅ Engage with posts (like, comment, share)
-- ✅ Send tips to favorite creators
+- ⬜ Send tips to favorite creators (planned)
 - ✅ Notifications for activity
 
 ### Platform
-- ✅ Real-time updates with Convex
+- ⬜ Real-time updates with Convex (deploy pending)
 - ✅ Authentication with Clerk
-- ✅ Payment processing with Stripe
+- ⬜ Payment processing with Stripe (planned)
 - ✅ Transactional emails with Resend
 - ✅ Analytics with PostHog
 - ✅ Error tracking with Sentry
@@ -181,10 +183,14 @@ bun run build
 3. Submit to app stores with `eas submit`
 
 ### Convex
+
+**Status: deploy pending.** Schema/functions may exist under `packages/convex`, but no production deployment is claimed at HEAD.
+
 ```bash
 cd packages/convex
-bunx convex deploy
+bunx convex deploy   # only after `bunx convex dev` has linked a real project
 ```
+
 
 ## Webhooks
 
