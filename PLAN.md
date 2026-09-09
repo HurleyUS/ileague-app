@@ -1,3 +1,7 @@
+## Honesty note
+
+**Convex deployment pending. Stripe planned-only.** Do not invent keys.
+
 # iLeague Development Plan
 
 ## Project Overview
